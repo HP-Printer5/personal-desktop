@@ -16,13 +16,41 @@
             <div id="clock"></div>
         </div>
         <div class="main">
-           
+            
+           <div class="widget notePad">
+                <h3>Notes</h3>
+                <textarea id="note-area" name="message" rows="20" cols="40"></textarea>
+                <p><button id="#saveNoteBtn">Save</button></p>
+           </div>
+           <div class="widget">
+                <h3>Welcome Video</h3>
+                <iframe src="https://www.youtube.com/watch?v=jNQXAC9IVRw" width="95%" height="300vh" frameborder="2"></iframe>
+           </div>
+           <div class="widget">
+                <h3>Widget 03</h3>
+            </div>
         </div>
     </div>
 </body>
 
 <script>
 
+    try{
+        var loadNotes = localStorage.getItem("notes");
+    }
+    catch(err){
+        var loadNotes = "Enter your notes here and click 'Save'";
+    }
+
+    $("#note-area").val(loadNotes);
+
+    $("#saveNoteBtn").click(function(){
+        var currentNotes = $("#note-area").val();
+        localStorage.setItem("notes", currentNotes);
+    })
+
+    var oldNotes = localStorage.getItem("notes");
+    $("#note-area").val(oldNotes);
 </script>
 </html>
 
